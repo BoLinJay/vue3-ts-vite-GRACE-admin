@@ -6,7 +6,6 @@ import router from './router'
 // reset样式
 import './assets/reset.css'
 import './assets/main.css'
-
 // 全局插件
 import component from '@/plugins/index'
 const app = createApp(App)

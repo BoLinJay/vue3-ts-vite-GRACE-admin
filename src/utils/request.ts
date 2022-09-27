@@ -1,3 +1,4 @@
+import { getToken } from './enum';
 import type { AxiosInstance } from 'axios'
 import axios from 'axios'
 
@@ -19,7 +20,9 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
     (config: any) => {
-
+        if (getToken()) {
+            config.headers.Authorization = `Bearer ${getToken()}`
+        }
         return config
     },
     err => {
@@ -34,7 +37,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     (response: any) => {
 
-        return response
+        return response.data
     },
     error => {
         if (error && error.response) {

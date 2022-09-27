@@ -1,3 +1,4 @@
+import NotFoundVue from '@/pages/notFound.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/door',
       name: 'door',
       component: () => import('@/views/Door/index.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFoundVue',
+      component: () => import('@/pages/notFound.vue')
     }
   ]
 })

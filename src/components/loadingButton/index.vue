@@ -1,10 +1,17 @@
 <script lang='ts' setup>
+import router from '@/router';
 import { ref } from 'vue';
 const props = defineProps({
+    // 登录时间
     wait: {
         type: Number,
-        default: 1000
+        default: 1500
     },
+    // 跳转路径
+    path: {
+        type: String,
+        default: '/'
+    }
 })
 const loading = ref(false)
 const Open = () => {
@@ -15,6 +22,7 @@ const Close = () => {
     clearTimeout(timer)
     timer = setTimeout(() => {
         loading.value = false
+        // router.push(props.path)
     }, props.wait);
 }
 defineExpose({

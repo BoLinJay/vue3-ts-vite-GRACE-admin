@@ -3,6 +3,7 @@ import { userLogin } from '@/api/user';
 import router from '@/router';
 import { reactive, ref } from 'vue';
 import loadingButton from '@/components/loadingButton/index.vue'
+import { setToken } from '@/utils/enum';
 // 登录注册控制
 const isSignUpOrSignIn = ref(false)
 const toSignUp = () => {
@@ -19,16 +20,18 @@ const userInfo = reactive({
 // 登录按钮
 const loadingBtn = ref<InstanceType<typeof loadingButton> | null>(null)
 const signIn = async () => {
+    // 开启
     loadingBtn.value?.Open()
     try {
         const res = await userLogin(userInfo)
         console.log(res);
-        // router.push('/')
-        loadingBtn.value?.Close()
+        res && setToken(res.data.token)
     } catch (error) {
-
+        console.log(error);
+    } finally {
+        // 关闭
+        loadingBtn.value?.Close()
     }
-
 }
 </script>
 <template>
