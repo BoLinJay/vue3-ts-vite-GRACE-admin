@@ -2,6 +2,7 @@
 import { userLogin } from '@/api/user';
 import router from '@/router';
 import { reactive, ref } from 'vue';
+import loadingButton from '@/components/loadingButton/index.vue'
 // 登录注册控制
 const isSignUpOrSignIn = ref(false)
 const toSignUp = () => {
@@ -16,11 +17,14 @@ const userInfo = reactive({
     password: '123456'
 })
 // 登录按钮
+const loadingBtn = ref<InstanceType<typeof loadingButton> | null>(null)
 const signIn = async () => {
+    loadingBtn.value?.Open()
     try {
         const res = await userLogin(userInfo)
         console.log(res);
         // router.push('/')
+        loadingBtn.value?.Close()
     } catch (error) {
 
     }
@@ -45,7 +49,8 @@ const signIn = async () => {
                         </i>
                         <input type="password" placeholder="Password" v-model="userInfo.password" />
                     </div>
-                    <button type="button" class="btn solid" @click="signIn">登录</button>
+                    <!-- <button type="button" class="btn" v-btn-loading=loading @click="signIn">登录</button> -->
+                    <loadingButton ref="loadingBtn" @click="signIn">登录</loadingButton>
                     <p class="social-text"></p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -90,7 +95,7 @@ const signIn = async () => {
                         </i>
                         <input type="password" placeholder="Password" />
                     </div>
-                    <button type="button" class="btn">注册</button>
+                    <button type="button" class="btn ">注册</button>
                     <p class="social-text"></p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -159,6 +164,26 @@ const signIn = async () => {
 body,
 input {
     font-family: "Poppins", sans-serif;
+}
+
+.btn {
+    width: 150px;
+    background-color: #5995fd;
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+
+
+}
+
+.btn:hover {
+    background-color: #4d84e2;
 }
 
 .container {
@@ -234,8 +259,8 @@ form.sign-in-form {
     line-height: 55px;
     color: #acacac;
     transition: 0.5s;
-    font-size: 1.8rem;
-    transform: translateY(5px);
+    font-size: 2.0rem;
+    transform: translate(10px, 10px)
 }
 
 .input-field input {
@@ -283,24 +308,7 @@ form.sign-in-form {
     border-color: #4481eb;
 }
 
-.btn {
-    width: 150px;
-    background-color: #5995fd;
-    border: none;
-    outline: none;
-    height: 49px;
-    border-radius: 49px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: 0.5s;
-}
 
-.btn:hover {
-    background-color: #4d84e2;
-}
 
 .panels-container {
     position: absolute;

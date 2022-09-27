@@ -19,9 +19,7 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
     (config: any) => {
-        console.log('object', config)
-        if (config.showLoading) {
-        }
+
         return config
     },
     err => {
@@ -35,8 +33,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
     (response: any) => {
-        if (response.config.showLoading) {
-        }
+
         return response
     },
     error => {
