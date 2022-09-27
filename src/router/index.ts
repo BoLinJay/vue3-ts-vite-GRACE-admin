@@ -1,25 +1,13 @@
-import NotFoundVue from '@/pages/notFound.vue'
+import { getToken } from './../utils/enum';
 import { createRouter, createWebHistory } from 'vue-router'
-
+import routes from './routes'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/HomeView.vue')
-    },
-    {
-      path: '/door',
-      name: 'door',
-      component: () => import('@/views/Door/index.vue')
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'NotFoundVue',
-      component: () => import('@/pages/notFound.vue')
-    }
-  ]
+  routes
+})
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'Door' && !getToken()) next('/door')
+  next()
 })
 
 export default router

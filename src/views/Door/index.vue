@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { userLogin } from '@/api/user';
-import router from '@/router';
 import { reactive, ref } from 'vue';
 import loadingButton from '@/components/loadingButton/index.vue'
 import { setToken } from '@/utils/enum';
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import veeSchema from '@/utils/vee-validate-schema'
+import _ from 'lodash'
 // 登录注册控制
 const isSignUpOrSignIn = ref(false)
 const toSignUp = () => {
@@ -14,46 +16,60 @@ const toSignIn = () => {
 }
 // 用户信息
 const userInfo = reactive({
-    username: 'admin',
-    password: '123456'
+    username: '',
+    password: ''
 })
+// 验证规则
+const mySchema = {
+    username: veeSchema.username,
+    password: veeSchema.password,
+}
 // 登录按钮
+interface I_userLogin {
+    data: object
+}
+
 const loadingBtn = ref<InstanceType<typeof loadingButton> | null>(null)
-const signIn = async () => {
+const signIn = _.debounce(async () => {
     // 开启
     loadingBtn.value?.Open()
     try {
         const res = await userLogin(userInfo)
         console.log(res);
-        res && setToken(res.data.token)
+        res.data && setToken(res.data.token)
     } catch (error) {
         console.log(error);
     } finally {
         // 关闭
         loadingBtn.value?.Close()
     }
-}
+}, 250, {
+    'leading': true,
+    'trailing': false
+})
 </script>
 <template>
     <div class="container" :class="{'sign-up-mode': isSignUpOrSignIn }">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="#" class="sign-in-form">
+                <Form action="#" class="sign-in-form" :validation-schema="mySchema" autocomplete="off"
+                    v-slot="{errors}">
                     <h2 class="title">用户登录</h2>
-                    <div class="input-field">
+                    <div class="input-field border" :class="{'error':errors.username}">
                         <i>
                             <i-mdi:account />
                         </i>
-                        <input type="text" placeholder="Username" v-model="userInfo.username" />
+                        <Field name="username" type="text" placeholder="Username" v-model="userInfo.username" />
                     </div>
-                    <div class="input-field">
+                    <ErrorMessage name="username" />
+                    <div class="input-field" :class="{'error':errors.password}">
                         <i>
                             <i-material-symbols:lock-sharp />
                         </i>
-                        <input type="password" placeholder="Password" v-model="userInfo.password" />
+                        <Field name="password" type="password" placeholder="Password" v-model="userInfo.password" />
                     </div>
-                    <!-- <button type="button" class="btn" v-btn-loading=loading @click="signIn">登录</button> -->
-                    <loadingButton ref="loadingBtn" @click="signIn">登录</loadingButton>
+                    <ErrorMessage name="password" />
+                    <loadingButton ref="loadingBtn" @click="signIn" :errors="errors">登录</loadingButton>
                     <p class="social-text"></p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -77,7 +93,7 @@ const signIn = async () => {
                             </i>
                         </a>
                     </div>
-                </form>
+                </Form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title">用户注册</h2>
                     <div class="input-field">
@@ -167,6 +183,10 @@ const signIn = async () => {
 body,
 input {
     font-family: "Poppins", sans-serif;
+}
+
+.error {
+    border: 1.5px solid red;
 }
 
 .btn {

@@ -9,7 +9,8 @@ import './assets/main.css'
 // 全局插件
 import component from '@/plugins/index'
 const app = createApp(App)
-
+// aniJS动画
+import './styles/animation.css'
 app.use(createPinia())
 app.use(router)
 app.use(component)
