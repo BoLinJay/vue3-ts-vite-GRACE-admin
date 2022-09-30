@@ -16,6 +16,8 @@ declare module '@vue/runtime-core' {
     'IUiw:apple': typeof import('~icons/uiw/apple')['default']
     'IUiw:qq': typeof import('~icons/uiw/qq')['default']
     LoadingButton: typeof import('./src/components/loadingButton/index.vue')['default']
+    Menu: typeof import('./src/components/Menu/index.vue')['default']
+    NavBar: typeof import('./src/components/navBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -11,6 +11,7 @@ import component from '@/plugins/index'
 const app = createApp(App)
 // aniJS动画
 import './styles/animation.css'
+// element-plus样式
 app.use(createPinia())
 app.use(router)
 app.use(component)

@@ -1,6 +1,6 @@
 <script lang='ts' setup>
-import router from '@/router';
-import { computed, onMounted, onUpdated, ref } from 'vue';
+import { computed, onUpdated, ref } from 'vue';
+import { useRouter } from 'vue-router';
 const props = defineProps({
     // 登录时间
     wait: {
@@ -18,6 +18,7 @@ const props = defineProps({
         default: () => { }
     }
 })
+const router = useRouter()
 const loading = ref(false)
 const Open = () => {
     loading.value = true
@@ -27,7 +28,7 @@ const Close = () => {
     clearTimeout(timer)
     timer = setTimeout(() => {
         loading.value = false
-        // router.push(props.path)
+        router.push(props.path)
     }, props.wait);
 }
 // 抖动
