@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
+import piniaPluginPersist from 'pinia-plugin-persist';
+import { createPinia } from 'pinia';
 import App from './App.vue'
 import router from './router'
 // reset样式
@@ -8,11 +8,15 @@ import './assets/reset.css'
 import './assets/main.css'
 // 全局插件
 import component from '@/plugins/index'
-const app = createApp(App)
 // aniJS动画
 import './styles/animation.css'
-// element-plus样式
-app.use(createPinia())
+// pinia数据持久化
+const pinia = createPinia();
+pinia.use(piniaPluginPersist)
+
+const app = createApp(App)
+app.use(pinia)
 app.use(router)
 app.use(component)
 app.mount('#app')
+

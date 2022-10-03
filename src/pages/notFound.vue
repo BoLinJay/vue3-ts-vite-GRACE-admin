@@ -17,7 +17,7 @@ const back = () => router.push('/')
 	</div>
 </template>
 
-<style>
+<style scoped>
 .code {
 	margin-bottom: 20px;
 }

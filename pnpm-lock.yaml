@@ -19,6 +19,7 @@ specifiers:
   lodash: ^4.17.21
   npm-run-all: ^4.1.5
   pinia: ^2.0.21
+  pinia-plugin-persist: ^1.0.0
   postcss: ^8.4.16
   sass: ^1.55.0
   tailwindcss: ^3.1.8
@@ -43,6 +44,7 @@ dependencies:
   element-plus: 2.2.17_vue@3.2.39
   lodash: 4.17.21
   pinia: 2.0.22_uxrvejtcwrakwzzo6hlouuo2vq
+  pinia-plugin-persist: 1.0.0_pinia@2.0.22+vue@3.2.39
   postcss: 8.4.16
   sass: 1.55.0
   tailwindcss: 3.1.8_postcss@8.4.16
@@ -1669,6 +1671,21 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /pinia-plugin-persist/1.0.0_pinia@2.0.22+vue@3.2.39:
+    resolution: {integrity: sha512-M4hBBd8fz/GgNmUPaaUsC29y1M09lqbXrMAHcusVoU8xlQi1TqgkWnnhvMikZwr7Le/hVyMx8KUcumGGrR6GVw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0
+      pinia: ^2.0.0
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      pinia: 2.0.22_uxrvejtcwrakwzzo6hlouuo2vq
+      vue: 3.2.39
+      vue-demi: 0.12.5_vue@3.2.39
+    dev: false
+
   /pinia/2.0.22_uxrvejtcwrakwzzo6hlouuo2vq:
     resolution: {integrity: sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==}
     peerDependencies:
@@ -2219,6 +2236,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /vue-demi/0.12.5_vue@3.2.39:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.39
+    dev: false
 
   /vue-demi/0.13.11_vue@3.2.39:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}

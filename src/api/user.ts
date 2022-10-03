@@ -1,5 +1,4 @@
 import www from '@/utils/request'
-import _ from 'lodash'
 // 用户api
 interface I_userLogin {
     username: string,
