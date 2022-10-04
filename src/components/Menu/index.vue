@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <el-menu router default-active="2" class="el-menu-vertical-demo" :collapse="collapseStore.isCollapse">
+    <el-menu router class="el-menu-vertical-demo" :collapse="collapseStore.isCollapse">
         <el-sub-menu v-for="menu,i in menusAll" :key="menu.id" :index="i + ''">
             <template #title>
                 <el-icon>
@@ -37,6 +37,9 @@ onMounted(async () => {
 <style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
+    height: auto;
     min-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 </style>

@@ -1,6 +1,7 @@
 import { getToken } from './enum';
 import type { AxiosInstance } from 'axios'
 import axios from 'axios'
+import router from '@/router';
 
 /**
  * 创建axios实例
@@ -40,6 +41,9 @@ instance.interceptors.response.use(
         return response.data
     },
     error => {
+        if (error.response && error.response.status === 401) {
+            router.push('/door')
+        }
         if (error && error.response) {
             switch (error.response.status) {
                 case 400:

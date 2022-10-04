@@ -17,17 +17,17 @@ const routes = [
         children: [
             {
                 path: 'category',
-                name: 'Category',
+                name: 'goodsCategory',
                 component: () => import('@/views/goods/category.vue')
             },
             {
                 path: 'release',
-                name: 'Release',
+                name: 'goodsRelease',
                 component: () => import('@/views/goods/release.vue')
             },
             {
                 path: 'list',
-                name: 'List',
+                name: 'goodsList',
                 component: () => import('@/views/goods/list.vue')
             }
         ]
@@ -39,7 +39,7 @@ const routes = [
         children: [
             {
                 path: 'list',
-                name: 'List',
+                name: 'orderList',
                 component: () => import('@/views/order/list.vue')
             }
         ]
@@ -51,12 +51,12 @@ const routes = [
         children: [
             {
                 path: 'info',
-                name: 'Info',
+                name: 'userInfo',
                 component: () => import('@/views/user/info.vue')
             },
             {
                 path: 'list',
-                name: 'List',
+                name: 'userList',
                 component: () => import('@/views/user/list.vue')
             }
         ]
@@ -68,12 +68,12 @@ const routes = [
         children: [
             {
                 path: 'role',
-                name: 'Role',
+                name: 'authRole',
                 component: () => import('@/views/auth/role.vue')
             },
             {
                 path: 'menu',
-                name: 'Menu',
+                name: 'authMenu',
                 component: () => import('@/views/auth/menu.vue')
             }
         ]

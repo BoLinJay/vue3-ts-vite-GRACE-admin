@@ -1,0 +1,12 @@
+// global transition css
+
+/* fade-transform */
+.fade-transform-enter-active,
+.fade-transform-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-transform-enter-from,
+.fade-transform-leave-to {
+  opacity: 0;
+}

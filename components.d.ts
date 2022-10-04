@@ -7,6 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Bread: typeof import('./src/components/Plugins/Bread.vue')['default']
+    Breadcrumbs: typeof import('./src/components/Breadcrumbs/index.vue')['default']
+    BreadeCrumbs: typeof import('./src/components/BreadeCrumbs/index.vue')['default']
+    BreadItem: typeof import('./src/components/Plugins/BreadItem.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
@@ -20,6 +24,7 @@ declare module '@vue/runtime-core' {
     'ILineMd:account': typeof import('~icons/line-md/account')['default']
     'IMaterialSymbols:lockSharp': typeof import('~icons/material-symbols/lock-sharp')['default']
     'IMdi:account': typeof import('~icons/mdi/account')['default']
+    Inex: typeof import('./src/components/Breadcrumbs/inex.vue')['default']
     'IUiw:aliwangwang': typeof import('~icons/uiw/aliwangwang')['default']
     'IUiw:android': typeof import('~icons/uiw/android')['default']
     'IUiw:apple': typeof import('~icons/uiw/apple')['default']

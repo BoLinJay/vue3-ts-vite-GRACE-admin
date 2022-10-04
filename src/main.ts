@@ -3,15 +3,12 @@ import piniaPluginPersist from 'pinia-plugin-persist';
 import { createPinia } from 'pinia';
 import App from './App.vue'
 import router from './router'
-// reset样式
-import './assets/reset.css'
-import './assets/main.css'
-// 全局插件
-import component from '@/plugins/index'
-// aniJS动画
-import './styles/animation.css'
-// pinia数据持久化
-const pinia = createPinia();
+
+import '@/styles/index.scss';  // global css 样式
+
+import component from '@/plugins/index'  // global plugins 
+
+const pinia = createPinia();  // pinia数据持久化
 pinia.use(piniaPluginPersist)
 
 const app = createApp(App)

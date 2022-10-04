@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import Menu from "../components/Menu/index.vue";
+import BreadCrumbs from '../components/BreadeCrumbs/index.vue'
 </script>
 
 <template>
@@ -13,7 +14,15 @@ import Menu from "../components/Menu/index.vue";
                     <Menu />
                 </el-aside>
                 <el-main>
-                    <RouterView />
+                    <!-- 面包屑 -->
+                    <BreadCrumbs />
+                    <router-view v-slot="{ Component, route}">
+                        <Transition name="fade-transform" mode="out-in">
+                            <keep-alive>
+                                <component :is="Component" :key="route.path" />
+                            </keep-alive>
+                        </Transition>
+                    </router-view>
                 </el-main>
             </el-container>
         </el-container>
@@ -21,6 +30,6 @@ import Menu from "../components/Menu/index.vue";
 </template>
 
 
-<style scoped lang="scss">
+<style scoped>
 
 </style>
