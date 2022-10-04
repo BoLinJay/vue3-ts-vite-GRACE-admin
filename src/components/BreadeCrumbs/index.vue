@@ -5,11 +5,23 @@ import Bread from '../Plugins/Bread.vue'
 import BreadItem from '../Plugins/BreadItem.vue'
 const route = useRoute()
 const breads = ref([] as RouteLocationMatched[])
-watch(() => route.matched, (n) => {
-    breads.value = breads.value.concat(n[1])
+// 判断是否已存在该面包屑
+const handleBeingBread = (bread: RouteLocationMatched[]) => {
+    let lth = bread.length - 1
+    let beingBread = breads.value.some(item => {
+        return item.name === bread[lth].name
+    })
+    return beingBread
+}
+watch(() => route.matched, (nV) => {
+    console.log(nV);
+    if (handleBeingBread(nV)) return
+    breads.value = breads.value.concat(nV[1])
+}, {
+    immediate: true
 })
-</script>
 
+</script>
 
 <template>
     <Bread>
@@ -17,7 +29,6 @@ watch(() => route.matched, (n) => {
         <BreadItem v-for="bread in breads" :key="bread.path" :to="bread.path">{{bread.name}}</BreadItem>
     </Bread>
 </template>
-
 
 <style scoped lang="scss">
 
