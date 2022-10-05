@@ -31,6 +31,8 @@ export default defineConfig({
       resolvers: [
         // 自动导入 Element Plus 组件
         ElementPlusResolver(),
+        // 图标导入
+        IconsResolver()
       ],
 
     }),
