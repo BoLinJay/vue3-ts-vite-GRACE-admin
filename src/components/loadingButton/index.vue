@@ -1,51 +1,27 @@
 <script lang='ts' setup>
 import { computed, onUpdated, ref } from 'vue';
-import { useRouter } from 'vue-router';
 const props = defineProps({
-    // 登录时间
-    wait: {
-        type: Number,
-        default: 1500
-    },
-    // 跳转路径
-    path: {
-        type: String,
-        default: '/'
-    },
     // 表单验证是否出错
     errors: {
         type: Object,
         default: () => { }
+    },
+    // loading
+    loading: {
+        type: Boolean,
+        default: true
     }
 })
-const router = useRouter()
-const loading = ref(false)
-const Open = () => {
-    loading.value = true
-}
-const Close = () => {
-    let timer
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-        loading.value = false
-        router.push(props.path)
-    }, props.wait);
-}
 // 抖动
 const isErrors = ref(0)
 onUpdated(() => {
     isErrors.value = Object.keys(props.errors).length //对象判空
-    console.log(props.errors);
 })
 const classObject = computed(() => ({
-    loading: !isErrors.value && loading.value,
+    loading: !isErrors.value && props.loading,
     shake: isErrors.value,
     animated: isErrors.value
 }))
-defineExpose({
-    Open,
-    Close
-})
 </script>
 
 

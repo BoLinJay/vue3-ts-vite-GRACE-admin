@@ -7,6 +7,7 @@ import { Form, Field, ErrorMessage } from 'vee-validate'
 import veeSchema from '@/utils/vee-validate-schema'
 import _ from 'lodash'
 import Message from '@/components/Message/Message';
+import { useRouter } from 'vue-router';
 // 登录注册控制
 const isSignUpOrSignIn = ref(false)
 const toSignUp = () => {
@@ -25,25 +26,27 @@ const mySchema = {
     username: veeSchema.username,
     password: veeSchema.password,
 }
-// 登录按钮
-interface I_userLogin {
-    data: object
-}
-const loadingBtn = ref<InstanceType<typeof loadingButton> | null>(null)
+// loading
+const loadingRef = ref(false)
+const router = useRouter()
 const signIn = _.debounce(async () => {
-    // 开启
-    loadingBtn.value?.Open()
+    loadingRef.value = true
     try {
         const res = await userLogin(userInfo)
         console.log(res);
         res.data && setToken(res.data.token)
+        setTimeout(() => {
+            loadingRef.value = false
+            router.push('/')
+        }, 2000);
         Message({ type: 'success', text: '登录成功' })
     } catch (error) {
         console.log(error);
-        Message({ type: 'error', text: '登录失败' })
+        Message({ type: 'error', text: '登录失败,请重新登录' })
     } finally {
-        // 关闭
-        loadingBtn.value?.Close()
+        setTimeout(() => {
+            loadingRef.value = false
+        }, 2000);
     }
 }, 250, {
     'leading': true,
@@ -71,7 +74,7 @@ const signIn = _.debounce(async () => {
                         <Field name="password" type="password" placeholder="Password" v-model="userInfo.password" />
                     </div>
                     <ErrorMessage name="password" />
-                    <loadingButton ref="loadingBtn" @click="signIn" :errors="errors">登录</loadingButton>
+                    <loadingButton @click="signIn" :loading="loadingRef" :errors="errors">登录</loadingButton>
                     <p class="social-text"></p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
