@@ -1,8 +1,7 @@
 <script lang='ts' setup>
-import { update } from 'lodash';
 import { useRoute, type RouteLocationMatched } from 'vue-router';
-import Bread from '../Plugins/Bread.vue'
-import BreadItem from '../Plugins/BreadItem.vue'
+import Bread from './components/Bread.vue'
+import BreadItem from './components/BreadItem.vue'
 const route = useRoute()
 const breads = ref([] as RouteLocationMatched[])
 // 判断是否已存在该面包屑
@@ -17,8 +16,6 @@ watch(() => route.matched, (nV) => {
     console.log(nV);
     if (handleBeingBread(nV)) return
     breads.value = breads.value.concat(nV[1])
-}, {
-    immediate: true
 })
 
 </script>
@@ -26,7 +23,9 @@ watch(() => route.matched, (nV) => {
 <template>
     <Bread>
         <BreadItem>首页</BreadItem>
-        <BreadItem v-for="bread in breads" :key="bread.path" :to="bread.path">{{bread.name}}</BreadItem>
+        <transition-group name="breadcrumb">
+            <BreadItem v-for="bread in breads" :key="bread.path" :to="bread.path">{{bread.meta.title}}</BreadItem>
+        </transition-group>
     </Bread>
 </template>
 

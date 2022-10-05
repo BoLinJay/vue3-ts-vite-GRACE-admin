@@ -1,6 +1,7 @@
 const routes = [
     {
         path: '/',
+        redirect: { name: 'goodsCategory' },
         name: 'Home',
         component: () => import('@/layout/HomeView.vue'),
 
@@ -18,17 +19,26 @@ const routes = [
             {
                 path: 'category',
                 name: 'goodsCategory',
-                component: () => import('@/views/goods/category.vue')
+                component: () => import('@/views/goods/category.vue'),
+                meta: {
+                    title: '商品分类'
+                }
             },
             {
                 path: 'release',
                 name: 'goodsRelease',
-                component: () => import('@/views/goods/release.vue')
+                component: () => import('@/views/goods/release.vue'),
+                meta: {
+                    title: '发布商品',
+                }
             },
             {
                 path: 'list',
                 name: 'goodsList',
-                component: () => import('@/views/goods/list.vue')
+                component: () => import('@/views/goods/list.vue'),
+                meta: {
+                    title: '商品列表'
+                }
             }
         ]
     },
@@ -40,7 +50,10 @@ const routes = [
             {
                 path: 'list',
                 name: 'orderList',
-                component: () => import('@/views/order/list.vue')
+                component: () => import('@/views/order/list.vue'),
+                meta: {
+                    title: '订单列表'
+                }
             }
         ]
     },
@@ -52,12 +65,18 @@ const routes = [
             {
                 path: 'info',
                 name: 'userInfo',
-                component: () => import('@/views/user/info.vue')
+                component: () => import('@/views/user/info.vue'),
+                meta: {
+                    title: '账户信息'
+                }
             },
             {
                 path: 'list',
                 name: 'userList',
-                component: () => import('@/views/user/list.vue')
+                component: () => import('@/views/user/list.vue'),
+                meta: {
+                    title: '用户列表'
+                }
             }
         ]
     },
@@ -69,12 +88,18 @@ const routes = [
             {
                 path: 'role',
                 name: 'authRole',
-                component: () => import('@/views/auth/role.vue')
+                component: () => import('@/views/auth/role.vue'),
+                meta: {
+                    title: '用户角色'
+                }
             },
             {
                 path: 'menu',
                 name: 'authMenu',
-                component: () => import('@/views/auth/menu.vue')
+                component: () => import('@/views/auth/menu.vue'),
+                meta: {
+                    title: '菜单权限'
+                }
             }
         ]
     },

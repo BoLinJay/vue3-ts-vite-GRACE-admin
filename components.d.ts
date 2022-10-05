@@ -7,10 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Bread: typeof import('./src/components/Plugins/Bread.vue')['default']
+    Bread: typeof import('./src/components/BreadeCrumbs/components/Bread.vue')['default']
     Breadcrumbs: typeof import('./src/components/Breadcrumbs/index.vue')['default']
     BreadeCrumbs: typeof import('./src/components/BreadeCrumbs/index.vue')['default']
-    BreadItem: typeof import('./src/components/Plugins/BreadItem.vue')['default']
+    BreadItem: typeof import('./src/components/BreadeCrumbs/components/BreadItem.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     'IIc:sharpEmail': typeof import('~icons/ic/sharp-email')['default']
     'ILineMd:account': typeof import('~icons/line-md/account')['default']
@@ -29,9 +30,9 @@ declare module '@vue/runtime-core' {
     'IUiw:android': typeof import('~icons/uiw/android')['default']
     'IUiw:apple': typeof import('~icons/uiw/apple')['default']
     'IUiw:qq': typeof import('~icons/uiw/qq')['default']
-    LoadingButton: typeof import('./src/components/loadingButton/index.vue')['default']
+    LoadingButton: typeof import('./src/components/LoadingButton/index.vue')['default']
     Menu: typeof import('./src/components/Menu/index.vue')['default']
-    NavBar: typeof import('./src/components/navBar/index.vue')['default']
+    NavBar: typeof import('./src/components/NavBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

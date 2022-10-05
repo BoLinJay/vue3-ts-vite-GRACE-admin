@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { userLogin } from '@/api/user';
 import { reactive, ref } from 'vue';
-import loadingButton from '@/components/loadingButton/index.vue'
+import loadingButton from '@/components/LoadingButton/index.vue'
 import { setToken } from '@/utils/enum';
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import veeSchema from '@/utils/vee-validate-schema'

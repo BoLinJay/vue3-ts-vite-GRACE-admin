@@ -1,6 +1,9 @@
 <script lang='ts' setup>
 import Menu from "../components/Menu/index.vue";
 import BreadCrumbs from '../components/BreadeCrumbs/index.vue'
+import { useCollapseStore } from '@/stores/navBar'
+const collapseStore = useCollapseStore()
+
 </script>
 
 <template>
@@ -10,7 +13,7 @@ import BreadCrumbs from '../components/BreadeCrumbs/index.vue'
                 <NavBar />
             </el-header>
             <el-container>
-                <el-aside width="200px">
+                <el-aside class="aside-max-width" :class="{'aside-min-width': collapseStore.isCollapse}">
                     <Menu />
                 </el-aside>
                 <el-main>
@@ -30,6 +33,17 @@ import BreadCrumbs from '../components/BreadeCrumbs/index.vue'
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
+.el-main {
+    padding: 5px;
+}
 
+.aside-max-width {
+    width: 200px;
+    transition: all .5s ease-out;
+}
+
+.aside-min-width {
+    width: 70px;
+}
 </style>

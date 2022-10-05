@@ -10,6 +10,4 @@ export const useCollapseStore = defineStore('Collapse', {
       isCollapse: true,
     }
   },
-  actions: {},
-  getters: {}
 })

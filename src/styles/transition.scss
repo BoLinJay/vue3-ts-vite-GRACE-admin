@@ -3,10 +3,21 @@
 /* fade-transform */
 .fade-transform-enter-active,
 .fade-transform-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease-out;
 }
 
 .fade-transform-enter-from,
 .fade-transform-leave-to {
   opacity: 0;
+}
+/* breadcrumb transition */
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all .5s;
+}
+
+.breadcrumb-enter-from,
+.breadcrumb-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
