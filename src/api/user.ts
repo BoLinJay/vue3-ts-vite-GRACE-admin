@@ -1,9 +1,10 @@
 import www from '@/utils/request'
-// 用户api
-interface I_userLogin {
-    username: string,
-    password: number | string
+import type { I_userLogin } from './type'
+
+enum API {
+    login = '/admins/login'
 }
+// login
 export const userLogin = (params: I_userLogin) => {
-    return www('/admins/login', 'post', params)
+    return www(API.login, 'post', params)
 }

@@ -6,6 +6,7 @@ import { setToken } from '@/utils/enum';
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import veeSchema from '@/utils/vee-validate-schema'
 import _ from 'lodash'
+import Message from '@/components/Message/Message';
 // 登录注册控制
 const isSignUpOrSignIn = ref(false)
 const toSignUp = () => {
@@ -28,7 +29,6 @@ const mySchema = {
 interface I_userLogin {
     data: object
 }
-
 const loadingBtn = ref<InstanceType<typeof loadingButton> | null>(null)
 const signIn = _.debounce(async () => {
     // 开启
@@ -37,8 +37,10 @@ const signIn = _.debounce(async () => {
         const res = await userLogin(userInfo)
         console.log(res);
         res.data && setToken(res.data.token)
+        Message({ type: 'success', text: '登录成功' })
     } catch (error) {
         console.log(error);
+        Message({ type: 'error', text: '登录失败' })
     } finally {
         // 关闭
         loadingBtn.value?.Close()

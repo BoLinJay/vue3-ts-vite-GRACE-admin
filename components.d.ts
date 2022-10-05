@@ -32,6 +32,7 @@ declare module '@vue/runtime-core' {
     'IUiw:qq': typeof import('~icons/uiw/qq')['default']
     LoadingButton: typeof import('./src/components/LoadingButton/index.vue')['default']
     Menu: typeof import('./src/components/Menu/index.vue')['default']
+    Message: typeof import('./src/components/Message/index.vue')['default']
     NavBar: typeof import('./src/components/NavBar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

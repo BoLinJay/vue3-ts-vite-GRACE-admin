@@ -40,7 +40,7 @@ const collapseStore = useCollapseStore()
 
 .aside-max-width {
     width: 200px;
-    transition: all .5s ease-out;
+    transition: all .8s ease-out;
 }
 
 .aside-min-width {

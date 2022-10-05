@@ -1,6 +1,11 @@
 import www from '@/utils/request';
-type I_getMenusAll = 'flat' | 'tree'
+import type { I_getMenusAll } from './type'
+
+enum API {
+    menuList = '/menu/all'
+}
+
 // 获取所有菜单
 export const getMenusAll = (type: I_getMenusAll): any => {
-    return www(`/menu/all?type=${type}`, 'get')
+    return www(API.menuList + `?type=${type}`, 'get')
 }
