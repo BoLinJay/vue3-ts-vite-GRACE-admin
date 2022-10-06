@@ -1,13 +1,7 @@
-<script lang='ts' setup>
-
-</script>
-
+<script lang="ts" setup></script>
 
 <template>
-    <div>category</div>
+  <div>category</div>
 </template>
 
-
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

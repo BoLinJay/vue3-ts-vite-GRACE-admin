@@ -2,7 +2,9 @@ import { getToken } from './enum';
 import type { AxiosInstance } from 'axios'
 import axios from 'axios'
 import router from '@/router';
-
+// 进度条
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 /**
  * 创建axios实例
  */
@@ -24,6 +26,7 @@ instance.interceptors.request.use(
         if (getToken()) {
             config.headers.Authorization = `Bearer ${getToken()}`
         }
+        NProgress.start()
         return config
     },
     err => {
@@ -37,7 +40,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
     (response: any) => {
-
+        NProgress.done();
         return response.data
     },
     error => {

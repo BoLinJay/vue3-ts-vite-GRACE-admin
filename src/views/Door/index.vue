@@ -39,10 +39,10 @@ const signIn = _.debounce(async () => {
             loadingRef.value = false
             router.push('/')
         }, 2000);
-        Message({ type: 'success', text: '登录成功' })
+        Message({ type: 'success', text: '登录成功，欢迎回来！' })
     } catch (error) {
         console.log(error);
-        Message({ type: 'error', text: '登录失败,请重新登录' })
+        Message({ type: 'error', text: '登录失败，请重新登录' })
     } finally {
         setTimeout(() => {
             loadingRef.value = false
